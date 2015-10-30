@@ -1,0 +1,34 @@
+<div id="trips">
+
+	<div id="search-box">
+
+		<form name="searchForm" novalidate>
+
+			<input type="text" ng-model="mySearch" name="search" placeholder="Find a Trip..." required> 
+			<button type="submit" id="searchBtn" ng-click="goSearch(mySearch, searchForm.$valid)">Go</button>
+			<p id="search-error" ng-if="searchForm.search.$invalid && !createTripForm.title.$pristine && submitted" class="field-error">Please enter a search.</p>
+
+		</form>
+		
+	</div>
+
+	<div ng-if="results" class="trip" class="clearfix" ng-repeat="result in results" ui-sref="trip({trip_id: result._id})">
+
+		<div id="bg"></div>
+
+		<img ng-src="/static/assets/img/{{ result.thumbnail }}" alt="{{ result.description }}">
+			
+		<h1>{{ result.title }}</h1>
+		<h3>{{ result.country }}</h3>
+
+	</div>
+
+	<div ng-if="!results[0]">
+
+		<h1>Sorry, no trips were found.</h1>
+
+		<div vector-map id="map"></div>
+
+	</div>
+
+</div>

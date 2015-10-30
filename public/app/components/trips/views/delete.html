@@ -1,0 +1,10 @@
+<div>
+
+	{{message}}
+
+	<h1>Delete {{ trip.title }}</h1>
+	
+	<md-button class="md-raised" ui-sref="my-trips({user_id: user_id})">Cancel</md-button>
+	<md-button class="md-raised md-warn" ng-click="deleteTrip(trip_id)">Delete</md-button>
+
+</div>

@@ -1,0 +1,8 @@
+<img ng-src="/static/assets/img/{{ details.thumbnail }}" alt="{{ details.description }}">
+<h2>{{ details.title }}</h2>
+<h4>{{ details.country }}</h4>
+<h5>{{ details.date | date }}</h5>
+
+<a ui-sref="update-my-trip({trip_id: details._id})">Update</a>
+<br/>
+<a ui-sref="delete-my-trip({trip_id: details._id})">Delete</a>

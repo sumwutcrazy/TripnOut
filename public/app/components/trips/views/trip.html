@@ -1,0 +1,23 @@
+<div id="trip">
+	
+	<h1>{{ trip.title }}</h1>
+
+	<div>
+		
+		<div ng-repeat="content in trip.content">
+
+			<div ng-if="content.datatype == 'text'" class="view-trip">
+				<p>{{ content.content }}</p>
+			</div>
+			<div ng-if="content.datatype == 'image'" class="view-trip">
+				<img src="/static/assets/img/{{content.content}}" alt="{{content.alt}}">
+			</div>
+			<div ng-if="content.datatype == 'video'" class="view-trip">
+				<youtube code="content.content"></youtube>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>

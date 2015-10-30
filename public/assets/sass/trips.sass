@@ -1,0 +1,225 @@
+.clearfix
+	&:after
+		content: " "
+		display: block
+		visibility: hidden
+		clear: both
+		height: 0
+		font-size: 0	
+
+$small-break: 768px
+
+@mixin respond($size)
+	@if $size == $small-break
+		@media only screen and (max-width: $small-break)
+			@content
+	@else if $size == $big-break
+		@media only screen and (max-width: $big-break)
+			@content
+
+// homepage =================================
+
+#trips
+	position: relative
+	width: 100%
+	.trip
+		width: 100%
+		position: relative
+		cursor: pointer
+		overflow: hidden
+		min-height: 400px
+		color: #fff
+		text-align: left
+		img
+			position: absolute
+			left: 50%
+			bottom: 0
+			min-width: 100%
+			min-height: 100%
+			height: auto
+			transform: translateX(-50%)
+		h1
+			z-index: 5
+			position: absolute
+			top: 0
+			left: 15%
+			padding: 15px 20px
+			margin: 0
+			background: rgba(0,0,0,0.5)
+			
+		h3	
+			z-index: 5
+			position: absolute
+			bottom: 0
+			right: 15%
+			padding: 10px 15px
+			margin: 0
+			background: rgba(0,0,0,0.5)
+		#bg
+			position: absolute
+			top: 0
+			right: 0
+			bottom: 0
+			left: 0
+			z-index: 1
+		&:hover #bg
+			background: rgba(255,255,255,0.2)
+		&:hover h1, h3
+			background: rgba(0,0,0,1)
+
+#search-box
+	min-height: 150px
+	line-height: 150px
+	input[type="text"]
+		max-width: 300px
+		width: 40%
+		padding: 5px 10px
+		font-size: 18px
+	#searchBtn
+		font-size: 18px
+		padding: 6px 10px
+		background: #000
+		color: #fff
+		border: none
+		outline: none
+	#searchBtn:hover
+		background: #333
+	#searchBtn:active
+		background: #555
+	p
+		position: absolute
+		top: 95px
+		margin-left: 50%
+		transform: translate(-50%, 0)
+
+#map 
+	width: 100%
+	height: 500px
+	margin: 0 0 40px 0
+	@include respond($small-break)
+		display: none
+
+#trip
+	max-width: 900px
+	width: 90%
+	margin: 0 auto
+	img
+		width: 100%
+	h1
+		display: inline-block
+		clear: both
+		background: #000
+		padding: 15px 20px
+		color: #fff
+
+	.view-trip
+		padding: 30px 0
+	.view-trip p
+		text-align: left
+		padding: 20px 40px
+
+// trips =================================
+
+#my-trips
+	position: relative
+	width: 100%
+	.my-trip
+		width: 100%
+		position: relative
+		overflow: hidden
+		min-height: 400px
+		color: #fff
+		text-align: left
+		img
+			position: absolute
+			left: 50%
+			bottom: 0
+			min-width: 100%
+			min-height: 100%
+			height: auto
+			transform: translateX(-50%)
+		h1
+			z-index: 5
+			position: absolute
+			top: 0
+			left: 15%
+			padding: 15px 20px
+			margin: 0
+			background: rgba(0,0,0,0.5)
+			
+		h3	
+			z-index: 5
+			position: absolute
+			bottom: 0
+			left: 15%
+			padding: 10px 15px
+			margin: 0
+			background: rgba(0,0,0,0.5)
+		.buttons
+			position: absolute
+			bottom: 30px
+			right: 30px
+			a
+				background: #fff
+				color: #000
+				
+
+#createTripForm, #updateTripForm
+	max-width: 800px
+	width: 90%
+	margin: 0 auto
+	text-align: left
+	img
+		width: 100%
+
+.form-group
+	margin: 35px 0
+
+.form-group.center
+	margin: 35px 0
+	text-align: center
+
+#details
+	padding: 0 0 0 0
+
+#content
+	border-top: 1px solid #ffab40
+
+.addSectionBtn
+	margin: 25px 0
+	background-color: #ffab40!important
+	color: #fff!important
+
+#content-stroke
+	padding: 5px 0
+	border-top: 1px solid #ffab40
+
+.section
+	margin: 50px 0
+
+.right
+	text-align: right
+
+.pad
+	padding: 15px 0 0 0
+
+
+.submitBtn
+	width: 300px
+	max-width: 60%
+
+.drop
+	padding: 15px
+	margin: 10px 0
+	border: 2px dashed #f1f1f1
+	border-radius: 5px
+	line-height: 34px
+.drop.drag-over
+	background: #5CB85C
+	color: #fff
+
+.uploadBtn
+	cursor: pointer
+
+.md-visually-hidden 
+	display: none

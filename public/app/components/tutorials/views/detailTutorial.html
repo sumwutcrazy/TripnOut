@@ -1,0 +1,108 @@
+<form accept-charset="utf-8" id="createTripForm" name="createTutorialForm"> 
+   
+    <md-input-container flex="">
+        <label for="tutorial_title">Title</label><br/>
+        <p>{{ tutorialdata.participants}}</p>
+    </md-input-container>
+
+    <md-input-container flex="">
+        <label for="tutorial_description">Description</label><br/>
+    <p>{{ tutorialdata.participants}}</p>
+    </md-input-container>  
+
+    <label for="tutorial_participants">Recommended Number of Participants</label>&nbsp;&nbsp;
+    <p>{{ tutorialdata.participants}}</p>
+    <br/><br/>
+    
+    <div ng-if="{{ tutorialdata.trip_link }}">    
+        <label for="tutorial_story">Link to a Story?</label>
+        <p>{{ tutorialdata.trip_link }}</p>
+    </div>
+    
+    <div id="components">
+      
+          <div ng-repeat="content in tutorialdata.content">
+              
+          
+       
+        <div id="prepSteps" ng-if="content.type == 'prepSteps'">
+           <h3>Preparation Steps:</h3>
+            <ul>
+                <li style="width:100%; margin-bottom:20px;" ng-repeat="step in content.data">
+                    {{ step.title }}<p>{{step.input}}</p>
+                </li>
+            </ul>
+            <br> 	  
+        </div>
+        
+        <div id="keyItems" ng-if="content.type == 'keyItems'">
+           <h3>Key Items to Bring:</h3>
+            <ul>
+                <li style="width:100%; margin-bottom:20px;" ng-repeat="item in content.data">
+                    {{ item.title }}<p>{{item.input}}</p>
+                </li>
+            </ul>
+            <br>  
+        </div>
+        
+        <div id="phrases" ng-if="content.type == 'phrases'">
+           <h3>Phrases to Know:</h3>
+             <ul>
+                <li style="width:100%; margin-bottom:20px;" ng-repeat="phrase in content.data">
+                    {{ phrase.title }}<p>{{phrase.input}}</p>
+                </li>
+            </ul>
+            <br> 	  
+        </div>
+        
+        <div id="cost" ng-if="content.type == 'cost'">
+             <h3>Average Cost of the Trip:</h3>
+             <ul>
+                <li style="width:100%; margin-bottom:20px;" ng-repeat="cost in content.data">
+                    {{ cost.title }}<p>{{cost.input}}</p>
+                </li>
+            </ul>
+            <br> 
+            <div class="right">
+				<md-button ng-click="removeSection('cost', $index)" class="md-raised md-warn">Remove</md-button>
+            </div>	  
+        </div>
+        
+        <div id="temperature" ng-if="content.type == 'temperature'">
+           <h3>What is the Average Temperature of the Location:</h3>
+            <ul>
+                <li style="width:100%; margin-bottom:20px;" ng-repeat="temp in content.data">
+                    {{ temp.title }}<p>{{temp.input}}</p>
+                </li>
+            </ul>
+            <br> 
+        </div>
+        
+        <div id="clothing" ng-if="content.type == 'clothing'">
+           <h3>What Type of Clothing is Required?</h3>
+            <ul>
+                <li style="width:100%; margin-bottom:20px;" ng-repeat="article in content.data">
+                    {{ article.title }}<p>{{article.input}}</p>
+                </li>
+            </ul>
+            <br> 
+            <div class="right">
+                <md-button ng-click="addNewData('Article', 'clothing', $parent.$index)" class="md-raised md-accent">Add Article</md-button>
+				<md-button ng-click="removeSection('clothing', $index)" class="md-raised md-warn">Remove</md-button>
+            </div>	  
+        </div>
+        
+        <div id="keyPlaces" ng-if="content.type == 'keyPlaces'">
+           <h3>Key Places to Visit:</h3>
+            <ul>
+                <li style="width:100%; margin-bottom:20px;" ng-repeat="place in content.data">
+                    {{ place.title }}<p>{{place.input}}</p>
+                </li>
+            </ul>
+            <br> 	  
+        </div>
+        
+       </div>
+    </div>
+
+</form>

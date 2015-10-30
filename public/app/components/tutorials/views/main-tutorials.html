@@ -1,0 +1,19 @@
+<h1>Trip 'n' Out Tutorials</h1>
+<p>WELCOME</p>
+
+<div>
+<md-content class="md-padding">
+
+  <md-card  ng-repeat="tutorial in allTutorials">
+
+  <md-card-content>
+      <div>
+          <p ng-repeat="user in allUsers" ng-if="tutorial.author == user._id">{{  user.username  }}</p>
+
+          <p>{{ tutorial.title }}</p>
+          <p>{{  tutorial.description}}</p>
+      </div>
+  </md-card-content>
+</md-card-content>
+</md-content>
+</div>

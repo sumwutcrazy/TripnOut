@@ -1,0 +1,35 @@
+<div id="my-trips">
+
+	<p ng-if="message">{{message}}</p>
+
+	<h1>My Trips</h1>
+
+	<div class="form-group">
+
+		<md-button class="md-raised" ui-sref="create-my-trip({user_id: user_id})">Create a Trip</md-button>
+
+	</div>
+
+	<div ng-if="trips" ng-repeat="trip in trips" class="my-trip">
+
+		<img ng-src="/static/assets/img/{{ trip.trip.thumbnail }}" alt="{{ trip.trip.description }}">
+
+		<h1>{{ trip.trip.title }}</h1>
+		<h3>{{ trip.trip.country }}</h3>
+
+		<div class="buttons">
+
+			<md-button class="md-raised" ui-sref="update-my-trip({trip_id: trip.trip._id})">Update</md-button>
+			<md-button class="md-raised md-warn" ui-sref="delete-my-trip({trip_id: trip.trip._id})">Delete</md-button>
+
+		</div>
+
+	</div>	
+
+	<div ng-if="!trips">
+		
+		<h3>You haven't created any trips yet!</h3>
+
+	</div>
+
+</div>

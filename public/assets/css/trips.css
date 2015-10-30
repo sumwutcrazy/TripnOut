@@ -1,0 +1,253 @@
+.clearfix:after {
+  content: " ";
+  display: block;
+  visibility: hidden;
+  clear: both;
+  height: 0;
+  font-size: 0;
+}
+
+#trips {
+  position: relative;
+  width: 100%;
+}
+#trips .trip {
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  min-height: 400px;
+  color: white;
+  text-align: left;
+}
+#trips .trip img {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  transform: translateX(-50%);
+}
+#trips .trip h1 {
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 15%;
+  padding: 15px 20px;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+#trips .trip h3 {
+  z-index: 5;
+  position: absolute;
+  bottom: 0;
+  right: 15%;
+  padding: 10px 15px;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+#trips .trip #bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+#trips .trip:hover #bg {
+  background: rgba(255, 255, 255, 0.2);
+}
+#trips .trip:hover h1, #trips .trip h3 {
+  background: black;
+}
+
+#search-box {
+  min-height: 150px;
+  line-height: 150px;
+}
+#search-box input[type="text"] {
+  max-width: 300px;
+  width: 40%;
+  padding: 5px 10px;
+  font-size: 18px;
+}
+#search-box #searchBtn {
+  font-size: 18px;
+  padding: 6px 10px;
+  background: black;
+  color: white;
+  border: none;
+  outline: none;
+}
+#search-box #searchBtn:hover {
+  background: #333333;
+}
+#search-box #searchBtn:active {
+  background: #555555;
+}
+#search-box p {
+  position: absolute;
+  top: 95px;
+  margin-left: 50%;
+  transform: translate(-50%, 0);
+}
+
+#map {
+  width: 100%;
+  height: 500px;
+  margin: 0 0 40px 0;
+}
+@media only screen and (max-width: 768px) {
+  #map {
+    display: none;
+  }
+}
+
+#trip {
+  max-width: 900px;
+  width: 90%;
+  margin: 0 auto;
+}
+#trip img {
+  width: 100%;
+}
+#trip h1 {
+  display: inline-block;
+  clear: both;
+  background: black;
+  padding: 15px 20px;
+  color: white;
+}
+#trip .view-trip {
+  padding: 30px 0;
+}
+#trip .view-trip p {
+  text-align: left;
+  padding: 20px 40px;
+}
+
+#my-trips {
+  position: relative;
+  width: 100%;
+}
+#my-trips .my-trip {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  min-height: 400px;
+  color: white;
+  text-align: left;
+}
+#my-trips .my-trip img {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  transform: translateX(-50%);
+}
+#my-trips .my-trip h1 {
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 15%;
+  padding: 15px 20px;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+#my-trips .my-trip h3 {
+  z-index: 5;
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  padding: 10px 15px;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+#my-trips .my-trip .buttons {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+#my-trips .my-trip .buttons a {
+  background: white;
+  color: black;
+}
+
+#createTripForm, #updateTripForm {
+  max-width: 800px;
+  width: 90%;
+  margin: 0 auto;
+  text-align: left;
+}
+#createTripForm img, #updateTripForm img {
+  width: 100%;
+}
+
+.form-group {
+  margin: 35px 0;
+}
+
+.form-group.center {
+  margin: 35px 0;
+  text-align: center;
+}
+
+#details {
+  padding: 0 0 0 0;
+}
+
+#content {
+  border-top: 1px solid #ffab40;
+}
+
+.addSectionBtn {
+  margin: 25px 0;
+  background-color: #ffab40 !important;
+  color: white !important;
+}
+
+#content-stroke {
+  padding: 5px 0;
+  border-top: 1px solid #ffab40;
+}
+
+.section {
+  margin: 50px 0;
+}
+
+.right {
+  text-align: right;
+}
+
+.pad {
+  padding: 15px 0 0 0;
+}
+
+.submitBtn {
+  width: 300px;
+  max-width: 60%;
+}
+
+.drop {
+  padding: 15px;
+  margin: 10px 0;
+  border: 2px dashed #f1f1f1;
+  border-radius: 5px;
+  line-height: 34px;
+}
+
+.drop.drag-over {
+  background: #5cb85c;
+  color: white;
+}
+
+.uploadBtn {
+  cursor: pointer;
+}
+
+.md-visually-hidden {
+  display: none;
+}

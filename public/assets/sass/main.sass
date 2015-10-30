@@ -1,0 +1,355 @@
+// google fonts
+@import url(http://fonts.googleapis.com/css?family=Didact+Gothic)
+
+*
+	margin: 0
+	padding: 0
+	box-sizing: border-box
+
+// variables =======================
+$body-color: black
+
+$small-break: 768px
+$big-break: 1024px
+
+$head-font: 'Didact Gothic', sans-serif
+$main-font: 'Open Sans', sans-serif
+$master-font-size: 16px
+
+$h1-size: 2em
+$h2-size: 1.7em
+$h3-size: 1.3em
+
+$content-pad: 15px
+
+$animation-speed: 0.3s
+$bezier: cubic-bezier(.42,0,.58,1)
+
+// mixins ===========================
+@mixin respond($size)
+	@if $size == $small-break
+		@media only screen and (min-width: $small-break)
+			@content
+	@else if $size == $big-break
+		@media only screen and (min-width: $big-break)
+			@content
+
+@mixin addAnim
+	-webkit-transition: $animation-speed $bezier
+	-moz-transition: $animation-speed $bezier
+	-o-transition: $animation-speed $bezier
+	transition: $animation-speed $bezier
+
+@mixin menuTrans
+	transform: translateX(100%)
+
+@mixin menuHam
+	transform: translateX(-100%)
+
+@mixin keyframes($name)
+	@-webkit-keyframes #{$name}
+		@content
+	@-moz-keyframes #{$name}
+		@content
+	@keyframes #{$name}
+		@content
+
+@mixin animation($string)
+	-webkit-animation: #{$string}
+	-moz-animation: #{$string}
+	animation: #{$string}
+
+// general =============================
+html
+	overflow-x: hidden !important
+	min-height: 100%
+
+body
+	position: relative
+	min-height: 100%
+	overflow-x: hidden !important
+	font:
+		family: $main-font
+		size: $master-font-size
+
+h1
+	font:
+		family: $head-font
+		size: $h1-size
+		weight: 300
+
+h2
+	font:
+		family: $head-font
+		size: $h2-size
+		weight: 300
+
+h3 
+	font:
+		family: $head-font
+		size: $h3-size
+		weight: 300
+
+li
+	list-style: none
+	font:
+		family: $head-font
+
+a
+	color: $body-color
+	text-decoration: none
+
+.btn
+	margin: 20px 0
+
+.loginForm, .editProfile
+	width: 300px
+	margin: 0 auto
+
+// container ============================
+.container
+	min-height: 100%
+	@include addAnim
+	&.menu
+		@include menuTrans
+
+
+// header and menu ===========================
+
+.header
+	padding: $content-pad
+	background: black
+	color: white
+	a
+		color: white
+	&:after
+		content: ""
+		display: block
+		clear: both
+	.title
+		display: table
+		width: 100%
+		@include respond($small-break)
+			display: block
+			margin-left: 50px
+		h1
+			display: table-cell
+			vertical-align: center
+			text-align: center
+			min-height: 68px
+			position: relative
+			z-index: 1
+			@include respond($small-break)
+				display: block
+				min-height: 0
+				margin: 0
+				float: left
+		.hamburger
+			display: block
+			position: absolute
+			left: 10px
+			top: 10px
+			@include addAnim
+			text-align: left
+			min-height: 68px
+			width: 42px
+			z-index: 9999
+			i
+				cursor: pointer
+			&.menu
+				@include menuHam
+				color: black
+				left: -10px
+			@include respond($small-break)
+				display: none
+	.main-nav
+		transform: translateX(-100%)
+		background: black
+		height: 100%
+		width: 100%
+		position: absolute
+		padding: $content-pad 30px
+		left: 0
+		&:after
+			content: ""
+			display: block
+			clear: both
+		@include respond($small-break)
+			transform: translateX(0)
+			padding: 0
+			position: static
+			text-align: right
+			right: 0
+			width: 100%
+			height: auto
+			.loggedMenu
+				width: 100%
+				ul
+					position: absolute
+					width: 100%
+					top: 0
+		ul
+			padding: $content-pad
+			@include respond($small-break)
+				padding: 0
+				position: absolute
+				bottom: 0
+				right: 0
+			li
+				list-style: none
+				margin: 20px 0
+				font:
+					size: 1.4em
+				@include respond($small-break)
+					display: inline-block
+					margin: 10px 20px
+					font:
+						size: 1em
+
+// main =================================
+
+main
+	position: relative
+	text-align: center
+
+#public
+	min-height: 100%
+	position: relative
+
+.viewContent
+	position: absolute
+	height: 100%
+	width: 100%
+	padding-bottom: 100px
+
+
+
+// login ================================
+
+
+// profile =================================
+.profile
+	nav
+		.btn
+			width: 100%
+		a
+			display: block
+			margin: 0 auto
+			width: 100%
+		li
+			margin: 15px
+		@include respond($small-break)
+			.btn
+				width: 400px
+			a
+				width: 400px
+
+.editProfileImg
+	position: relative
+	min-height: 360px
+	.imgCont
+		height: 270px
+	.editImgCont
+		position: absolute
+		width: 100%
+
+.preImage
+	width: 200px
+	height: 215px
+
+// members list
+.proImage
+	display: inline-block
+	position: relative
+	top: 20px
+	height: 60px
+	width: 60px
+	-webkit-border-radius: 30px
+	-moz-border-radius: 30px
+	border-radius: 30px
+	overflow: hidden
+	img
+		position: relative
+		right: 25px
+		height: 100px
+		width: 100px
+
+.online
+	&:before
+	content: ""
+	display: inline-block
+	height: 10px
+	width: 10px
+	-webkit-border-radius: 5px
+	-moz-border-radius: 5px
+	border-radius: 5px
+	background: #77ff88
+
+.offline
+	@extend .online
+	background: #d7d7d7
+
+.userList
+	.member
+		float: left
+		position: relative
+		text-align: left
+		font-size: 1.2em
+		width: 300px
+		margin: 0 auto
+		padding: 30px
+		padding-left: 50px
+		p
+			display: inline-block
+		@include respond($small-break)
+			width: 50%
+			padding: 0 50px
+			margin: 0 0
+			display: inline-block
+		@include respond($big-break)
+			width: 33.33%
+			
+
+// Angular animation ENTER LEAVE ========================
+
+@include keyframes('appear')
+	from
+		opacity: 0 
+
+@include keyframes('disappear')
+	to
+		opacity: 0
+
+@include keyframes('slideLeft')
+	from
+		transform: translateX(100%)
+	to
+		transform: translateX(0)
+
+@include keyframes('slideRight')
+	to
+		transform: translateX(100%)
+
+.logInReg
+	position: absolute
+	width: 100%
+
+.warning
+	background: red
+	color: white
+
+.loggedIn.ng-enter, .loggedOut.ng-enter
+	@include animation('appear 0.5s')
+	@include respond($small-break)
+		@include animation('slideLeft 0.5s')
+
+.loggedIn.ng-leave, .loggedOut.ng-leave
+	@include animation('disappear 0.5s')
+	@include respond($small-break)
+		@include animation('slideRight 0.5s')
+
+.ng-enter, .logInReg.ng-enter
+	@include animation('appear 0.5s')
+
+.ng-leave, .logInReg.ng-leave
+	@include animation('disappear 0.5s')

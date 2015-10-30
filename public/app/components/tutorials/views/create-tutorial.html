@@ -1,0 +1,167 @@
+<form accept-charset="utf-8" id="createTripForm" name="createTutorialForm"> 
+   
+    <md-input-container flex="">
+        <label for="tutorial_title">Title</label><br/>
+        <input type="text" name="tutorial_title" ng-model="tutorialdata.title"><br/>
+    </md-input-container>
+
+    <md-input-container flex="">
+        <label for="tutorial_description">Description</label><br/>
+       <textarea name="tutorial_description" ng-model="tutorialdata.description"></textarea>
+    </md-input-container>  
+
+    <label for="tutorial_participants">Recommended Number of Participants</label>&nbsp;&nbsp;
+    <md-select ng-model="tutorialdata.participants" placeholder="Participants">
+        <md-option value="1">1</md-option>
+        <md-option value="2">2</md-option>
+        <md-option value="3">3</md-option>
+        <md-option value="4">4</md-option>
+        <md-option value="5">5</md-option>
+        <md-option value="6">6</md-option>
+        <md-option value="7">7</md-option>
+        <md-option value="8">8</md-option>
+        <md-option value="9">9</md-option>
+        <md-option value="10+">10+</md-option>
+    </md-select>
+    <br/><br/>
+    <label for="tutorial_story">Link to a Story?</label>
+    <md-radio-group ng-model="tutorial.choice" ng-change="resetTripLink()">
+        <md-radio-button name="tutorial_story" value="Yes">Yes </md-radio-button>
+        <!-- END OF OPTION -->	
+        <md-radio-button name="tutorial_story" value="No">No </md-radio-button>
+    </md-radio-group>
+
+    <div id="story_list" ng-if="tutorial.choice == 'Yes'">
+        <label for="tutorial_story_connect" style="margin-right: 50px;">Please select a Story</label>
+        <md-select placeholder="Please Choose a Story" ng-model="tutorialdata.trip_link">
+            <md-option ng-repeat="userTrip in userTrips" value="{{userTrip.trip._id}}">{{userTrip.trip.title}}</md-option>
+        </md-select>
+
+    </div>
+    <div id="components">
+      
+          <div ng-repeat="content in tutorialdata.content">
+              
+          
+       
+        <div id="prepSteps" ng-if="content.type == 'prepSteps'">
+           <h3>Preparation Steps:</h3>
+            <ul>
+                <li style="width:100%; margin-bottom:20px;" ng-repeat="step in content.data">
+                    {{ step.title }}<input style="width:100%;" ng-model="step.input" type="text" placeholder="Please enter this step" />
+                </li>
+            </ul>
+            <br> 
+            <div class="right">
+                <md-button ng-click="addNewData('Step', 'prepSteps', $parent.$index)" class="md-raised md-accent">Add Step</md-button>
+				<md-button ng-click="removeSection('prepSteps', $index)" class="md-raised md-warn">Remove</md-button>
+            </div>	  
+        </div>
+        
+        <div id="keyItems" ng-if="content.type == 'keyItems'">
+           <h3>Key Items to Bring:</h3>
+            <ul>
+                <li style="width:100%; margin-bottom:20px;" ng-repeat="item in content.data">
+                    {{ item.title }}<input style="width:100%;" ng-model="item.input" type="text" placeholder="Please enter an Item" />
+                </li>
+            </ul>
+            <br> 
+            <div class="right">
+                <md-button ng-click="addNewData('Item', 'keyItems', $parent.$index)" class="md-raised md-accent">Add Item</md-button>
+				<md-button ng-click="removeSection('keyItems', $index)" class="md-raised md-warn">Remove</md-button>
+            </div>	  
+        </div>
+        
+        <div id="phrases" ng-if="content.type == 'phrases'">
+           <h3>Phrases to Know:</h3>
+             <ul>
+                <li style="width:100%; margin-bottom:20px;" ng-repeat="phrase in content.data">
+                    {{ phrase.title }}<input style="width:100%;" ng-model="phrase.input" type="text" placeholder="Please enter an Item" />
+                </li>
+            </ul>
+            <br> 
+            <div class="right">
+                <md-button ng-click="addNewData('Phrase', 'phrases', $parent.$index)" class="md-raised md-accent">Add Phrase</md-button>
+				<md-button ng-click="removeSection('phrases', $index)" class="md-raised md-warn">Remove</md-button>
+            </div>	  
+        </div>
+        
+        <div id="cost" ng-if="content.type == 'cost'">
+             <h3>Average Cost of the Trip:</h3>
+             <ul>
+                <li style="width:100%; margin-bottom:20px;" ng-repeat="cost in content.data">
+                    {{ cost.title }}<input style="width:100%;" ng-model="cost.input" type="text" placeholder="What is the Average Cost?" />
+                </li>
+            </ul>
+            <br> 
+            <div class="right">
+				<md-button ng-click="removeSection('cost', $index)" class="md-raised md-warn">Remove</md-button>
+            </div>	  
+        </div>
+        
+        <div id="temperature" ng-if="content.type == 'temperature'">
+           <h3>What is the Average Temperature of the Location:</h3>
+            <ul>
+                <li style="width:100%; margin-bottom:20px;" ng-repeat="temp in content.data">
+                    {{ temp.title }}<input style="width:100%;" ng-model="temp.input" type="text" placeholder="What is the Average Temperature?" />
+                </li>
+            </ul>
+            <br> 
+            <div class="right">
+				<md-button ng-click="removeSection('temperature', $index)" class="md-raised md-warn">Remove</md-button>
+            </div>   
+        </div>
+        
+        <div id="clothing" ng-if="content.type == 'clothing'">
+           <h3>What Type of Clothing is Required?</h3>
+            <ul>
+                <li style="width:100%; margin-bottom:20px;" ng-repeat="article in content.data">
+                    {{ article.title }}<input style="width:100%;" ng-model="article.input" type="text" placeholder="Please enter the Article of Clothing" />
+                </li>
+            </ul>
+            <br> 
+            <div class="right">
+                <md-button ng-click="addNewData('Article', 'clothing', $parent.$index)" class="md-raised md-accent">Add Article</md-button>
+				<md-button ng-click="removeSection('clothing', $index)" class="md-raised md-warn">Remove</md-button>
+            </div>	  
+        </div>
+        
+        <div id="keyPlaces" ng-if="content.type == 'keyPlaces'">
+           <h3>Key Places to Visit:</h3>
+            <ul>
+                <li style="width:100%; margin-bottom:20px;" ng-repeat="place in content.data">
+                    {{ place.title }}<input style="width:100%;" ng-model="place.input" type="text" placeholder="Please enter a Place" />
+                </li>
+            </ul>
+            <br> 
+            <div class="right">
+                <md-button ng-click="addNewData('Place', 'keyPlaces', $parent.$index)" class="md-raised md-accent">Add Place</md-button>
+				<md-button ng-click="removeSection('keyPlaces', $index)" class="md-raised md-warn">Remove</md-button>
+            </div>	  
+        </div>
+        
+       </div>
+    </div>
+
+    <div id="contentButtons" style="margin-top:50px;">
+        <md-button class="tutorial_section md-raised md-primary md-default-theme" id="button1" ng-click="addCompartment('prepSteps', 'Step')" ng-if="tutorial.prepSteps == false">Preparation Steps</md-button>
+        
+        <md-button class="tutorial_section md-raised md-primary md-default-theme" id="button2" ng-click="addCompartment('keyItems', 'Item')" ng-if="tutorial.keyItems == false">Key Items</md-button>
+        
+        <md-button class="tutorial_section md-raised md-primary md-default-theme" id="button3" ng-click="addCompartment('phrases', 'Phrase')" ng-if="tutorial.phrases == false">Common Phrases</md-button>
+     
+        <md-button class="tutorial_section md-raised md-primary md-default-theme" id="button4" ng-click="addCompartment('cost', 'Cost')" ng-if="tutorial.cost == false">Average Cost</md-button>
+        
+        <md-button class="tutorial_section md-raised md-primary md-default-theme" id="button6" ng-click="addCompartment('temperature', 'Temperature')" ng-if="tutorial.temperature == false">Average Temperature</md-button>
+        <md-button class="tutorial_section md-raised md-primary md-default-theme" id="button7" ng-click="addCompartment('clothing', 'Article')" ng-if="tutorial.clothing == false">Clothing Requirements</md-button>
+        
+        <md-button class="tutorial_section md-raised md-primary md-default-theme" id="button8" ng-click="addCompartment('keyPlaces', 'Place')" ng-if="tutorial.keyPlaces == false">Key Places to Visit</md-button>
+    </div>
+    
+    <div class="form-group center">
+
+			<md-button type="submit" class="md-raised submitBtn" ng-click="createTutorial()">Create Tutorial</md-button>
+			<md-button class="md-raised" ui-sref="myTutorials">Cancel</md-button>
+
+		</div>
+</form>

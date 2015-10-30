@@ -1,0 +1,325 @@
+@import url(http://fonts.googleapis.com/css?family=Didact+Gothic);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html {
+  overflow-x: hidden !important;
+  min-height: 100%; }
+
+body {
+  position: relative;
+  min-height: 100%;
+  overflow-x: hidden !important;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px; }
+
+h1 {
+  font-family: "Didact Gothic", sans-serif;
+  font-size: 2em;
+  font-weight: 300; }
+
+h2 {
+  font-family: "Didact Gothic", sans-serif;
+  font-size: 1.7em;
+  font-weight: 300; }
+
+h3 {
+  font-family: "Didact Gothic", sans-serif;
+  font-size: 1.3em;
+  font-weight: 300; }
+
+li {
+  list-style: none;
+  font-family: "Didact Gothic", sans-serif; }
+
+a {
+  color: black;
+  text-decoration: none; }
+
+.btn {
+  margin: 20px 0; }
+
+.loginForm, .editProfile {
+  width: 300px;
+  margin: 0 auto; }
+
+.container {
+  min-height: 100%;
+  -webkit-transition: 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+  -o-transition: 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+  transition: 0.3s cubic-bezier(0.42, 0, 0.58, 1); }
+  .container.menu {
+    transform: translateX(100%); }
+
+.header {
+  padding: 15px;
+  background: black;
+  color: white; }
+  .header a {
+    color: white; }
+  .header:after {
+    content: "";
+    display: block;
+    clear: both; }
+  .header .title {
+    display: table;
+    width: 100%; }
+    @media only screen and (min-width: 768px) {
+      .header .title {
+        display: block;
+        margin-left: 50px; } }
+    .header .title h1 {
+      display: table-cell;
+      vertical-align: center;
+      text-align: center;
+      min-height: 68px;
+      position: relative;
+      z-index: 1; }
+      @media only screen and (min-width: 768px) {
+        .header .title h1 {
+          display: block;
+          min-height: 0;
+          margin: 0;
+          float: left; } }
+    .header .title .hamburger {
+      display: block;
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      -webkit-transition: 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+      -moz-transition: 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+      -o-transition: 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+      transition: 0.3s cubic-bezier(0.42, 0, 0.58, 1);
+      text-align: left;
+      min-height: 68px;
+      width: 42px;
+      z-index: 9999; }
+      .header .title .hamburger i {
+        cursor: pointer; }
+      .header .title .hamburger.menu {
+        transform: translateX(-100%);
+        color: black;
+        left: -10px; }
+      @media only screen and (min-width: 768px) {
+        .header .title .hamburger {
+          display: none; } }
+  .header .main-nav {
+    transform: translateX(-100%);
+    background: black;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    padding: 15px 30px;
+    left: 0; }
+    .header .main-nav:after {
+      content: "";
+      display: block;
+      clear: both; }
+    @media only screen and (min-width: 768px) {
+      .header .main-nav {
+        transform: translateX(0);
+        padding: 0;
+        position: static;
+        text-align: right;
+        right: 0;
+        width: 100%;
+        height: auto; }
+        .header .main-nav .loggedMenu {
+          width: 100%; }
+          .header .main-nav .loggedMenu ul {
+            position: absolute;
+            width: 100%;
+            top: 0; } }
+    .header .main-nav ul {
+      padding: 15px; }
+      @media only screen and (min-width: 768px) {
+        .header .main-nav ul {
+          padding: 0;
+          position: absolute;
+          bottom: 0;
+          right: 0; } }
+      .header .main-nav ul li {
+        list-style: none;
+        margin: 20px 0;
+        font-size: 1.4em; }
+        @media only screen and (min-width: 768px) {
+          .header .main-nav ul li {
+            display: inline-block;
+            margin: 10px 20px;
+            font-size: 1em; } }
+
+main {
+  position: relative;
+  text-align: center; }
+
+#public {
+  min-height: 100%;
+  position: relative; }
+
+.viewContent {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 100px; }
+
+.profile nav .btn {
+  width: 100%; }
+.profile nav a {
+  display: block;
+  margin: 0 auto;
+  width: 100%; }
+.profile nav li {
+  margin: 15px; }
+@media only screen and (min-width: 768px) {
+  .profile nav .btn {
+    width: 400px; }
+  .profile nav a {
+    width: 400px; } }
+
+.editProfileImg {
+  position: relative;
+  min-height: 360px; }
+  .editProfileImg .imgCont {
+    height: 270px; }
+  .editProfileImg .editImgCont {
+    position: absolute;
+    width: 100%; }
+
+.preImage {
+  width: 200px;
+  height: 215px; }
+
+.proImage {
+  display: inline-block;
+  position: relative;
+  top: 20px;
+  height: 60px;
+  width: 60px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  overflow: hidden; }
+  .proImage img {
+    position: relative;
+    right: 25px;
+    height: 100px;
+    width: 100px; }
+
+.online, .offline {
+  content: "";
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background: #77ff88; }
+
+.offline {
+  background: #d7d7d7; }
+
+.userList .member {
+  float: left;
+  position: relative;
+  text-align: left;
+  font-size: 1.2em;
+  width: 300px;
+  margin: 0 auto;
+  padding: 30px;
+  padding-left: 50px; }
+  .userList .member p {
+    display: inline-block; }
+  @media only screen and (min-width: 768px) {
+    .userList .member {
+      width: 50%;
+      padding: 0 50px;
+      margin: 0 0;
+      display: inline-block; } }
+  @media only screen and (min-width: 1024px) {
+    .userList .member {
+      width: 33.33%; } }
+
+@-webkit-keyframes appear {
+  from {
+    opacity: 0; } }
+@-moz-keyframes appear {
+  from {
+    opacity: 0; } }
+@keyframes appear {
+  from {
+    opacity: 0; } }
+@-webkit-keyframes disappear {
+  to {
+    opacity: 0; } }
+@-moz-keyframes disappear {
+  to {
+    opacity: 0; } }
+@keyframes disappear {
+  to {
+    opacity: 0; } }
+@-webkit-keyframes slideLeft {
+  from {
+    transform: translateX(100%); }
+  to {
+    transform: translateX(0); } }
+@-moz-keyframes slideLeft {
+  from {
+    transform: translateX(100%); }
+  to {
+    transform: translateX(0); } }
+@keyframes slideLeft {
+  from {
+    transform: translateX(100%); }
+  to {
+    transform: translateX(0); } }
+@-webkit-keyframes slideRight {
+  to {
+    transform: translateX(100%); } }
+@-moz-keyframes slideRight {
+  to {
+    transform: translateX(100%); } }
+@keyframes slideRight {
+  to {
+    transform: translateX(100%); } }
+.logInReg {
+  position: absolute;
+  width: 100%; }
+
+.warning {
+  background: red;
+  color: white; }
+
+.loggedIn.ng-enter, .loggedOut.ng-enter {
+  -webkit-animation: appear 0.5s;
+  -moz-animation: appear 0.5s;
+  animation: appear 0.5s; }
+  @media only screen and (min-width: 768px) {
+    .loggedIn.ng-enter, .loggedOut.ng-enter {
+      -webkit-animation: slideLeft 0.5s;
+      -moz-animation: slideLeft 0.5s;
+      animation: slideLeft 0.5s; } }
+
+.loggedIn.ng-leave, .loggedOut.ng-leave {
+  -webkit-animation: disappear 0.5s;
+  -moz-animation: disappear 0.5s;
+  animation: disappear 0.5s; }
+  @media only screen and (min-width: 768px) {
+    .loggedIn.ng-leave, .loggedOut.ng-leave {
+      -webkit-animation: slideRight 0.5s;
+      -moz-animation: slideRight 0.5s;
+      animation: slideRight 0.5s; } }
+
+.ng-enter, .logInReg.ng-enter {
+  -webkit-animation: appear 0.5s;
+  -moz-animation: appear 0.5s;
+  animation: appear 0.5s; }
+
+.ng-leave, .logInReg.ng-leave {
+  -webkit-animation: disappear 0.5s;
+  -moz-animation: disappear 0.5s;
+  animation: disappear 0.5s; }
+
+/*# sourceMappingURL=main.css.map */

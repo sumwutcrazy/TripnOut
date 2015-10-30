@@ -1,0 +1,6 @@
+<div class="userList">
+	<h1>Members</h1>
+	<div class="member" ng-repeat="member in main.members">
+		<span class="proImage"><img ng-src="/static/assets/img/profile/{{member.pic}}" ></span> <p>{{ member.username }} <span ng-class="{'online': member.online==true, 'offline': member.online!=true}"></span></p>
+	</div>
+</div>

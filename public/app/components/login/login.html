@@ -1,0 +1,68 @@
+<div class="logInReg" ng-if="type!='create'">
+  <h1>Login</h1>
+  <h2 class="warning">{{ main.error }}</h2>
+  <form ng-submit="main.doLogin()" class="loginForm">
+
+    <!--USERNAME INPUT-->
+    <md-input-container>
+      <label>Username</label>
+      <input required type="text" class="form-control" ng-model="main.loginData.username">
+    </md-input-container>
+
+    <!--PASSWORD INPUT-->
+    <md-input-container>
+      <label>Password</label>
+      <input required type="password" class="form-control" ng-model="main.loginData.password">
+    </md-input-container>
+    <div class="alert alert-danger" ng-if="error">
+      {{ error }}
+    </div>
+    <!-- LOGIN BUTTON-->
+    <md-button type="submit" aria-label="Login" class="btn md-raised">
+      <span ng-if="!main.processing">Login</span>
+
+      <span ng-if="main.processing" class="spinner"><md-progress-circular md-mode="indeterminate"></md-progress-circular></span>
+
+    </md-button>
+
+  </form>
+
+</div>
+
+<div class="logInReg" ng-if="type=='create'">
+  <h1>Register</h1>
+  <div ng-if="type=='create' && success">
+    <h2 class="warning">{{ message }}</h2>
+  </div>
+
+  <form ng-submit="saveUser()" class="loginForm">
+    <!--NAME INPUT-->
+    <md-input-container>
+      <label>Name</label>
+      <input required type="text" ng-model="userData.name">
+    </md-input-container>
+
+    <!--USERNAME INPUT-->
+    <md-input-container>
+      <label>Username</label>
+      <input required type="text" class="form-control" ng-model="userData.username">
+    </md-input-container>
+
+    <!--PASSWORD INPUT-->
+    <md-input-container>
+      <label>Password</label>
+      <input required type="password" class="form-control" ng-model="userData.password">
+    </md-input-container>
+    <div class="alert alert-danger" ng-if="error">
+      {{ error }}
+    </div>
+    <!-- LOGIN BUTTON-->
+    <md-button type="submit" aria-label="Register" class="btn md-raised">
+      <span ng-if="!processing">Register</span>
+
+      <span ng-if="processing" class="spinner"><md-progress-circular md-mode="indeterminate"></md-progress-circular></span>
+
+    </md-button>
+
+  </form>
+</div>

@@ -1,0 +1,30 @@
+<h1>{{ myData.username  }}'s Tutorials</h1>
+
+<div class="form-group">
+
+    <md-button class="md-raised" ui-sref="create-tutorial">Create a Tutorial</md-button>
+
+</div>
+
+<div id="createTripForm">
+<md-content class="md-padding">
+
+     <md-list>
+      <md-list-item class="md-3-line" ng-repeat="tutorial in myData.tutorials" >
+        <div class="md-list-item-text">
+          <h3>{{ tutorial.tutorial.title  }}</h3>
+          <h4>{{ tutorial.tutorial.description }}</h4>
+          <span ng-repeat="data in tutorial.tutorial.content">{{ data.name }}<span ng-if="!$last">,</span>&nbsp;</span>
+        </div>
+        <div class="md-actions" layout="row" layout-align="end center">
+            <md-button class="md-raised md-accent" ui-sref="updateTutorial({tutorial_id: tutorial.tutorial._id})">Update</md-button>
+            <md-button class="md-raised md-warn" ui-sref="deleteTutorial({tutorial_id: tutorial.tutorial._id})">Delete</md-button>
+        </div>  
+        <md-divider ></md-divider>
+        <br>
+      </md-list-item>
+      
+       
+      
+</md-content>
+</div>

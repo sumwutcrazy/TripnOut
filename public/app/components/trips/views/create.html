@@ -1,0 +1,129 @@
+<h1>Make a New Trip</h1>
+
+<form accept-charset="utf-8" id="createTripForm" name="createTripForm" novalidate>
+
+	<div>
+
+		<div class="form-group">
+			<p>* = Required</p>
+		</div>
+
+		<div id="details">
+
+			<md-input-container>
+			    <label>Title *</label>
+				<input type="text" ng-model="tripdata.title" name="title" required>
+		    </md-input-container>
+		    <p ng-show="createTripForm.title.$invalid && !createTripForm.title.$pristine || createTripForm.title.$invalid && submitted" class="field-error">Please enter a title.</p>
+
+		    <md-input-container>
+			    <label>Description *</label>
+			    <textarea ng-model="tripdata.description" name="description" columns="1" md-maxlength="250" required></textarea>
+		    </md-input-container>
+		    <p ng-show="createTripForm.description.$invalid && !createTripForm.description.$pristine || createTripForm.description.$invalid && submitted" class="field-error">Please enter a description under 250 characters.</p>
+
+			<md-select placeholder="Select a Country" ng-model="tripdata.country" name="country" required>
+		    	<md-option ng-repeat="country in countries" value="{{country}}">{{country}}</md-option>
+		    </md-select> *
+		    <p ng-show="createTripForm.country.$invalid && !createTripForm.country.$pristine || createTripForm.country.$invalid && submitted" class="field-error">Please select a country.</p>
+
+		    <div class="form-group">
+			    <h4>Make this trip searchable through the homepage?</h4>
+			    <md-switch ng-model="tripdata.public_trip" aria-label="Switch 1" ng-change="onChange(tripdata.public_trip)">
+					{{ publicMsg }}
+				</md-switch>
+			</div>
+
+			<div class="form-group">
+				<h3>Add a Thumbnail</h3>
+				<div flow-init flow-files-submitted="$flow.upload()">
+					<div ng-class="dropClass" flow-drop ng-if="!$flow.files[0]" flow-drag-enter="dropClass = 'drop drag-over'" flow-drag-leave="dropClass='drop'">
+					    <span class='uploadBtn' flow-btn>Upload File</span> <strong>OR</strong> Drag And Drop your file here
+					</div>
+					<div ng-if="$flow.files[0]">
+						<img flow-img="$flow.files[0]" />
+						<span style="display:none" ng-init="tripdata.thumbnail = $flow.files[0].name"></span>
+						<span style="display:none" ng-init="$flow.files[0]['imgType'] = 'profile'"></span>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<h2>Build Your Trip:</h2>
+
+		<div id="content">
+			
+			<div ng-repeat="content in tripdata.content">
+
+				<div class="section" ng-if="content.datatype == 'text'">
+					<md-input-container>
+						<textarea ng-model='content.content' columns='2' placeholder='Begin writing...' required>{{ content.content }}</textarea>
+					</md-input-container>
+					<div class="right">
+						<md-button ng-click="removeSection($index)" class="md-raised md-warn">Remove</md-button>
+					</div>	
+				</div>
+
+				<div class="section" ng-if="content.datatype == 'image'">
+					<div flow-init flow-files-submitted='$flow.upload()'>
+						<img ng-if="!$flow.files[0] && content.content" src="/static/assets/img/{{content.content}}">
+						<div ng-class='dropClass' flow-drop 
+							flow-drag-enter='dropClass = "drop drag-over"' 
+							flow-drag-leave='dropClass="drop"'>
+							<span class='uploadBtn' flow-btn>Upload File</span> <strong>OR</strong> Drag And Drop your file here
+						</div>
+						<img ng-if="$flow.files[0]" flow-img='$flow.files[0]' />
+						<span ng-if="$flow.files[0]" style="display:none" ng-init="content.content = $flow.files[0].name"></span>
+					</div>
+					<div class="right">
+						<md-button ng-click="removeSection($index)" class="md-raised md-warn">Remove</md-button>
+					</div>
+				</div>
+
+				<div class="section" ng-if="content.datatype == 'video'">
+					<md-input-container>
+						<input type='text' ng-model='content.content' placeholder='Enter a Youtube Video URL' required>
+					</md-input-container>
+					<youtube ng-if="content.content" code="content.content"></youtube>
+					<div class="right">
+						<md-button ng-click="removeSection($index)" class="md-raised md-warn">Remove</md-button>
+					</div>
+				</div>
+
+		</div>
+
+		<div class="form-group center">
+
+			<div ng-show="displayButton">
+				<md-button class="md-raised addSectionBtn" ng-click="showOptions()">Add Section</md-button>
+			</div>
+
+		</div>
+
+		<div class="form-group center">
+
+			<div ng-hide="displayButton">
+				<md-button ng-click="addSection('text'); showOptions()" class="md-raised">Add a Text Area</md-button>
+				<md-button ng-click="addSection('image'); showOptions()" class="md-raised">Add an Image</md-button>
+				<md-button ng-click="addSection('video'); showOptions()" class="md-raised">Embed a Video</md-button>
+			</div>
+
+		</div>
+
+		<div id="content-stroke"></div>
+
+		<div class="form-group center">
+
+			<md-button type="submit" class="md-raised submitBtn" ng-click="submitForm(createTripForm.$valid, tripdata)">Create Trip</md-button>
+			<md-button class="md-raised" ui-sref="my-trips({user_id: user_id})">Cancel</md-button>
+
+		</div>
+
+	</div>
+
+	<!-- <br><br><br> -->
+	<!-- {{ tripdata }} -->
+	<br><br><br>
+
+</form>
